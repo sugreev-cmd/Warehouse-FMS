@@ -18,7 +18,8 @@ Single file: `index.html`. Runs on GitHub Pages, Netlify, or any static host.
 |------|-------|
 | Supabase tables `wh_fms_tasks` + `wh_fms_settings` (with RLS) | ✅ Created |
 | App pushed and published on GitHub Pages | ✅ Done |
-| Six Supabase Auth login users | ⬜ **You need to add these** — see below |
+| Login accounts for Roles 1–5 | ✅ Reuses your existing Task FMS accounts |
+| Login account for Role 6 | ⬜ **One user to add** — see below |
 
 ---
 
@@ -31,7 +32,7 @@ Single file: `index.html`. Runs on GitHub Pages, Netlify, or any static host.
 | Filters | Month + date range | Month + **Day** + date range |
 | Tasks table | `task_fms_tasks` | `wh_fms_tasks` |
 | Settings table | `task_fms_settings` | `wh_fms_settings` |
-| Login emails | `fms-r1…r5@` | `wh-r1…r6@` |
+| Login emails | `fms-r1…r5@` | `fms-r1…r5@` (shared) + `wh-r6@` |
 | Browser storage key | `taskfms_settings_v1` | `whfms_settings_v1` |
 | Language | Hinglish | English |
 
@@ -40,27 +41,33 @@ browser and the same Supabase project without touching each other's data.
 
 ---
 
-## Remaining setup: create the six login users
+## Remaining setup: one login account
 
-Supabase Dashboard → **Authentication → Users → Add user**, tick *Auto Confirm User*,
-and set a password for each:
+Roles 1–5 reuse the login accounts you already have, so **you can log in right away with
+the same passwords you use for Task FMS**:
 
-| Role | Login email |
-|------|-------------|
-| Role 1 — Owner | `wh-r1@astorialiving.org` |
-| Role 2 | `wh-r2@astorialiving.org` |
-| Role 3 | `wh-r3@astorialiving.org` |
-| Role 4 | `wh-r4@astorialiving.org` |
-| Role 5 | `wh-r5@astorialiving.org` |
-| Role 6 | `wh-r6@astorialiving.org` |
+| Role | Login email | Status |
+|------|-------------|--------|
+| Role 1 — Owner | `fms-r1@astorialiving.org` | ✅ exists |
+| Role 2 | `fms-r2@astorialiving.org` | ✅ exists |
+| Role 3 | `fms-r3@astorialiving.org` | ✅ exists |
+| Role 4 | `fms-r4@astorialiving.org` | ✅ exists |
+| Role 5 | `fms-r5@astorialiving.org` | ✅ exists |
+| Role 6 | `wh-r6@astorialiving.org` | ⬜ add this one |
+
+To add Role 6: Supabase Dashboard → **Authentication → Users → Add user**, email
+`wh-r6@astorialiving.org`, set a password, tick *Auto Confirm User*.
 
 Passwords are never stored in this file. Each person can change their own from
-**Settings → 🗄 Data → Change my password**, or you can reset it from the dashboard.
-To use different email addresses, edit them in **Settings → 🗄 Data → Login emails**.
+**Settings → 🗄 Data → Change my password**. To use different email addresses, edit them
+in **Settings → 🗄 Data → Login emails**.
 
 Then open the live link and log in as **Owner**. On that first load — while
 `wh_fms_tasks` is still empty — the app inserts **5 demo tasks** so the dashboard,
 MIS report and filters have something to show. Delete them once your real tasks are in.
+
+> Note: Roles 1–5 share their login accounts with Task FMS, but the two apps use
+> completely separate tables and browser storage, so the data never mixes.
 
 ---
 

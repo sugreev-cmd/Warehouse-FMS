@@ -698,8 +698,8 @@ html{-webkit-text-size-adjust:100%}
     </div>
 
     <div class="sp-tab-content" id="sptab-bulk">
-      <div class="sp-info-box">Paste a list — one task per line. While creating tasks the app respects your own <b>Week Off</b> aur <b>Holidays</b> settings. Importing the same list again will not create duplicates.</div>
-      <div class="sp-label">Task list (ek line = ek task)</div>
+      <div class="sp-info-box">Paste a list — one task per line. While creating tasks the app respects your own <b>Week Off</b> and <b>Holidays</b> settings. Importing the same list again will not create duplicates.</div>
+      <div class="sp-label">Task list (one line = one task)</div>
       <textarea class="sp-input" id="bulk-list" style="height:140px;resize:vertical;font-size:11px" placeholder="Hall 4 Cleaning floors&#10;Hall 4 Cleaning carpet&#10;Pantry Refill handsoap"></textarea>
       <label class="rl-cat" style="margin:8px 0;display:inline-flex"><input type="checkbox" id="bulk-clean" checked> Strip text written inside brackets</label>
       <div class="sp-label">Category</div><select class="sp-input" id="bulk-section"></select>
@@ -736,7 +736,7 @@ html{-webkit-text-size-adjust:100%}
       <div class="sp-label" style="margin-top:14px">Change your password (for the role you are logged in as)</div>
       <input class="sp-input" id="sp-newpw" type="password" placeholder="Naya password (min 8 characters)">
       <button class="sp-btn-secondary" id="changePwBtn">🔑 Change My Password</button>
-      <div class="sp-label" style="margin-top:14px">Table banane ka SQL</div>
+      <div class="sp-label" style="margin-top:14px">SQL to create the tables</div>
       <textarea class="sp-input" id="sqlBox" readonly style="height:150px;font-family:'JetBrains Mono',monospace;font-size:9px;resize:vertical"></textarea>
       <button class="sp-btn-secondary" onclick="copySql()">📋 Copy SQL</button>
       <div class="sp-note" style="margin-top:14px">🌐 <b>Shared settings</b> — categories, roles, week off, holidays and team are saved in Supabase, so everyone sees the same configuration. Only a Full-access role can change them.</div>

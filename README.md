@@ -20,6 +20,7 @@ Single file: `index.html`. Runs on GitHub Pages, Netlify, or any static host.
 | App pushed and published on GitHub Pages | ✅ Done |
 | Login accounts for Roles 1–5 | ✅ Reuses your existing Task FMS accounts |
 | Login account for Role 6 | ⬜ **One user to add** — see below |
+| Proof-photo uploader deployed and wired into the app | ✅ Done |
 
 ---
 
@@ -204,9 +205,21 @@ Holidays can be imported from an Excel or CSV file in **Settings → 🗓 Week O
 ## Photo proof (optional)
 
 `WarehouseFMS_Proof_Uploader.gs` is a Google Apps Script web app that stores proof photos
-in your Google Drive under `Warehouse FMS Proofs / <date> /` and returns the link to the
-app. Deploy it once (steps are in the file header), then paste the deployment URL into
+in your Google Drive under `Warehouse FMS Proofs / <date> /` and returns the link to the app.
+
+**Already deployed and wired in** — the **Take Photo** button on any task works out of the
+box. The deployment URL is set as the app default and can be changed at any time in
 **Settings → 🗄 Data → Proof Upload Script URL**.
+
+To redeploy after editing the script: open the project in Apps Script →
+**Deploy → Manage deployments → ✏️ Edit → Version: New version → Deploy**. Keep the same
+deployment so the URL does not change; if you create a brand-new deployment instead, paste
+the new URL into Settings → 🗄 Data.
+
+The web app runs as the project owner with access set to **Anyone**, which is required
+because the FMS page calls it without a Google login. Treat the deployment URL as
+semi-secret — the script only accepts `uploadProof` requests and only writes into the
+`Warehouse FMS Proofs` folder, but don't post the URL publicly.
 
 ---
 

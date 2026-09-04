@@ -950,6 +950,7 @@ var DEFAULT_SETTINGS={theme:'dark',
  db:{url:'https://duckuubnszaytuuerffx.supabase.co',key:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1Y2t1dWJuc3pheXR1dWVyZmZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MjQ4NDMsImV4cCI6MjA4OTQwMDg0M30.Aoesp7WobjoyvQWFIIZkDpE0JIcvnX9lLlLihK0byLE',table:'wh_fms_tasks'},
  teamMembers:[{name:'Member 1',position:'Owner',email:'member1@company.com'}],
  ownerEmail:'owner@company.com',resendKey:'',senderEmail:'noreply@company.com',reminderTime:'09:00',
+ proofScriptUrl:'https://script.google.com/macros/s/AKfycbx10bKkGfDTrheAj-a5adViF5XXmlRFhNwG3SZVEXj-kRE5CwzFGWcGbcsbxevjGmlt/exec',
  emailDaily:false,emailNew:true,emailOverdue:true,holidays:[],
  auth:{r1:'fms-r1@astorialiving.org',r2:'fms-r2@astorialiving.org',r3:'fms-r3@astorialiving.org',r4:'fms-r4@astorialiving.org',r5:'fms-r5@astorialiving.org',r6:'wh-r6@astorialiving.org'},
  passwords:{},
@@ -1443,7 +1444,7 @@ function pullSettingsThen(cb){
   fetchRemoteSettings().then(function(r){
     if(r){applyRemoteSettingsToUI();try{if((allTasks||[]).length)buildAll();}catch(e){}setSyncPill('Settings synced','saved');}
     else if(isAdmin()){
-      // first run: this browser's settings ko server par bhej do
+      // first run: push this browser's settings up to the server
       sbFetch('/'+STABLE,'POST',{id:'main',data:sharedPayload(),admin_roles:adminRoles(),updated_by:currentRole})
         .then(function(){remoteReady=true;setSyncPill('Settings uploaded','saved');})
         .catch(function(e){console.error(e);});
